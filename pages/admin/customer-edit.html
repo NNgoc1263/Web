@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi" data-admin-guard>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>BOOKLY - Sửa khách hàng</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap">
+    <link rel="icon" href="../../assets/images/logo-bookly.png">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <script src="../../assets/js/admin/auth.js"></script>
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <h2>BOOKLY</h2>
+        <p class="text-center">ADMIN PANEL</p>
+        <a href="index.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg><span>Tổng quan</span></a>
+        <a href="index.html#customers"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Quản lý khách hàng</span></a>
+        <a href="index.html#products"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></svg><span>Quản lý sản phẩm</span></a>
+        <a href="index.html#orders"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg><span>Quản lý đơn hàng</span></a>
+        <a href="index.html#stats"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Thống kê</span></a>
+        <a href="../../index.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Về website</span></a>
+        <a href="login.html" class="admin-logout"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M20 12H9"/></svg><span>Đăng xuất</span></a>
+      </aside>
+      <section class="admin-main">
+        <a class="back-link arrow-back" href="index.html#customers" id="ce-back">Về quản lý khách hàng</a>
+        <div class="ce" id="ce-page">
+          <header class="ce-head">
+            <div class="ce-avatar" id="ce-avatar" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <div class="ce-head-text">
+              <p class="ce-crumb" id="ce-crumb">Quản lý người dùng / Thêm mới</p>
+              <h1 id="ce-title">Thêm người dùng</h1>
+              <p class="ce-sub" id="ce-sub">Nhập thông tin để tạo tài khoản khách hàng mới</p>
+            </div>
+          </header>
+
+          <div class="ce-layout is-solo" id="ce-layout">
+            <form class="ce-form" id="customer-edit-form" action="index.html#customer-saved" method="get" novalidate>
+              <section class="ce-card">
+                <div class="ce-card-head"><span class="ce-step">1</span><div><h2>Thông tin cá nhân</h2><p>Dùng để liên hệ và giao hàng cho khách.</p></div></div>
+                <div class="ce-fields">
+                  <label class="ce-field ce-full">Họ và tên
+                    <input id="cf-name" placeholder="VD: Nguyễn Minh Anh" autocomplete="off">
+                  </label>
+                  <label class="ce-field">Email
+                    <input id="cf-email" type="email" placeholder="example@gmail.com" autocomplete="off">
+                  </label>
+                  <label class="ce-field">Số điện thoại
+                    <input id="cf-phone" inputmode="tel" placeholder="VD: 0912 345 678" autocomplete="off">
+                  </label>
+                  <label class="ce-field ce-full">Địa chỉ giao hàng
+                    <textarea id="cf-address" rows="3" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea>
+                  </label>
+                </div>
+              </section>
+
+              <section class="ce-card" id="cf-login">
+                <div class="ce-card-head"><span class="ce-step">2</span><div><h2>Thông tin đăng nhập</h2><p>Mật khẩu ban đầu cho tài khoản mới (có thể để trống khi minh họa).</p></div></div>
+                <div class="ce-fields">
+                  <label class="ce-field">Mật khẩu
+                    <input id="cf-pass" type="password" placeholder="Nhập mật khẩu" autocomplete="new-password">
+                  </label>
+                  <label class="ce-field">Xác nhận mật khẩu
+                    <input id="cf-pass2" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
+                  </label>
+                </div>
+              </section>
+
+              <section class="ce-card">
+                <div class="ce-card-head"><span class="ce-step" id="ce-step-acc">2</span><div><h2>Tài khoản</h2><p>Khách bị khóa sẽ không đăng nhập hoặc đặt hàng được.</p></div></div>
+                <div class="ce-fields">
+                  <div class="ce-field ce-full">Trạng thái
+                    <div class="ce-seg" role="radiogroup" aria-label="Trạng thái tài khoản">
+                      <label><input type="radio" name="cf-status" value="active" checked><span><b>Đang hoạt động</b><small>Được đăng nhập và mua hàng</small></span></label>
+                      <label><input type="radio" name="cf-status" value="locked"><span><b>Đã khóa</b><small>Tạm ngừng, giữ nguyên dữ liệu</small></span></label>
+                    </div>
+                  </div>
+                  <label class="ce-field">Ngày đăng ký
+                    <input id="cf-date" placeholder="Tự động ghi nhận khi tạo tài khoản" readonly>
+                  </label>
+                </div>
+              </section>
+
+              <div class="ce-actions">
+                <a class="btn-outline" href="index.html#customers">Hủy</a>
+                <button class="btn" type="submit" id="cf-submit">TẠO TÀI KHOẢN</button>
+              </div>
+            </form>
+
+            <aside class="ce-side">
+              <section class="ce-card ce-summary" id="ce-summary" hidden>
+                <h3>Tóm tắt</h3>
+                <div class="ce-stats">
+                  <div><span>Đơn hàng</span><b id="ce-orders">0</b></div>
+                  <div><span>Đang xử lý</span><b id="ce-open">0</b></div>
+                </div>
+                <a class="view-link" id="ce-detail-link" href="customer-detail.html">Xem chi tiết khách hàng</a>
+              </section>
+
+              <section class="ce-card" id="cf-security" hidden>
+                <h3>Bảo mật tài khoản</h3>
+                <p class="ce-note">Mật khẩu được bảo vệ và không hiển thị. Admin chỉ có thể đặt lại mật khẩu mới.</p>
+                <form id="cf-reset-form" action="index.html#password-reset" method="get" novalidate>
+                  <label class="ce-field">Mật khẩu mới
+                    <input id="cf-newpass" type="password" placeholder="Nhập mật khẩu mới" autocomplete="new-password">
+                  </label>
+                  <label class="ce-field">Xác nhận mật khẩu mới
+                    <input id="cf-newpass2" type="password" placeholder="Nhập lại mật khẩu mới" autocomplete="new-password">
+                  </label>
+                  <label class="cf-check"><input type="checkbox"> Yêu cầu đổi mật khẩu ở lần đăng nhập tới</label>
+                  <button class="btn ce-block" type="submit">ĐẶT LẠI MẬT KHẨU</button>
+                </form>
+              </section>
+
+              <section class="ce-card ce-danger" id="ce-danger" hidden>
+                <h3>Xóa tài khoản</h3>
+                <p class="ce-note" id="ce-danger-note"></p>
+                <button type="button" class="ce-del" id="ce-del">Xóa tài khoản</button>
+              </section>
+            </aside>
+          </div>
+        </div>
+        <div class="confirm-box" id="ce-confirm">
+          <div class="confirm-card">
+            <h3>Xóa khách hàng?</h3>
+            <div class="confirm-body"><p id="ce-confirm-text"></p></div>
+            <div class="confirm-actions">
+              <button type="button" class="admin-btn" id="ce-confirm-no">Hủy</button>
+              <button type="button" class="admin-btn admin-btn-danger" id="ce-confirm-yes">Xóa</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../../assets/js/admin/data.js"></script>
+    <script src="../../assets/js/admin/customer-edit.js"></script>
+  </body>
+</html>
