@@ -1,0 +1,2690 @@
+/* =====================================================================
+   BOOKLY — CSS khu vực quản trị (đăng nhập, thống kê, sản phẩm, khách hàng, đơn hàng).
+   ===================================================================== */
+
+/* ---------- TRANG QUẢN TRỊ (ADMIN) ---------- */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 650px;
+  background: var(--bg);
+}
+.admin-layout .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 25px 15px;
+  overflow-y: auto;
+  border-right: 3px solid var(--green);
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar h2 {
+  text-align: center;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar p {
+  color: #ddd3c7;
+}
+.admin-layout .sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+  padding: 13px;
+  border-radius: 5px;
+  color: #ede4d8;
+  font-size: 14px;
+  transition: background .2s ease, color .2s ease;
+}
+.admin-layout .sidebar a span {
+  white-space: nowrap;
+}
+.admin-layout .sidebar a:hover,
+.admin-layout .sidebar a:focus-visible {
+  background: #6e262c;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar a.admin-logout {
+  color: var(--terra);
+}
+.admin-layout .sidebar a.admin-logout:hover {
+  background: var(--terra);
+  color: #fbf7f2;
+}
+.admin-layout .sidebar .ico,
+.stat .ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.admin-layout .sidebar .ico {
+  color: #fbf7f2;
+  stroke: currentColor;
+}
+.stat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-layout .admin-main {
+  min-width: 0;
+  padding: 30px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1,
+.admin-layout .admin-main > p {
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1 {
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+.stat {
+  padding: 20px;
+  border-left: 4px solid #924149;
+  border-radius: 8px;
+}
+.stat h2 {
+  margin: 8px 0;
+}
+.admin-box {
+  margin: 20px 0;
+  padding: 22px;
+  border-radius: 8px;
+}
+.admin-layout .stat,
+.admin-layout .admin-box {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(47, 23, 29, .06);
+}
+.admin-layout .stat {
+  border-top: 3px solid var(--green);
+  border-left: 0;
+}
+.admin-layout .stat:nth-child(even) {
+  border-top-color: var(--terra);
+}
+.admin-layout .stat h2 {
+  color: var(--green);
+}
+.admin-layout .stat:nth-child(even) h2 {
+  color: var(--terra);
+}
+.admin-layout .admin-box h2 {
+  color: var(--ink);
+}
+.admin-box h2.has-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.admin-layout .admin-table th {
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .admin-table td {
+  color: var(--ink);
+}
+.admin-layout .admin-table tr:nth-child(even) td {
+  background: var(--bg);
+}
+.admin-box .admin-table td {
+  white-space: nowrap;
+}
+.admin-box .admin-table td:nth-child(4) {
+  white-space: normal;
+}
+.admin-box .admin-table td small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.admin-box .admin-table td .admin-btn {
+  margin: 2px 2px 2px 0;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.admin-table .thumb {
+  display: block;
+  width: 36px;
+  height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  object-fit: cover;
+}
+.admin-btn {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.admin-layout .admin-btn {
+  display: inline-block;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--green);
+  cursor: pointer;
+}
+.admin-layout .admin-btn:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fbf7f2;
+}
+.admin-layout .admin-btn-danger {
+  color: #8a2230;
+}
+.admin-layout .admin-btn-danger:hover {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fbf7f2;
+}
+.admin-layout .status {
+  background: #f4ede4;
+  color: var(--green);
+}
+.admin-layout .status.status-wait {
+  background: #f6ecd6;
+  color: #8a5a12;
+}
+.admin-layout .status.status-done {
+  background: #e1f0e5;
+  color: #2f6b3f;
+}
+.admin-layout .status.status-cancel {
+  background: #f6e1e3;
+  color: #8a2230;
+}
+/* Quản lý sản phẩm: danh sách và form thêm/sửa */
+.admin-split {
+  display: block;
+  margin: 20px 0;
+}
+.admin-split > .admin-box {
+  margin: 0;
+  min-width: 0;
+}
+.admin-split .admin-table th,
+.admin-split .admin-table td {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.admin-split .admin-table td:nth-child(3) {
+  min-width: 150px;
+}
+.admin-split .admin-table .thumb {
+  width: 40px;
+  height: 56px;
+}
+.admin-split .admin-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.admin-split h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+.admin-split .btn-sm,
+.admin-box .btn-sm {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+}
+#product-form {
+  display: none;
+}
+#product-form:target {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 36px max(24px, calc((100% - 760px) / 2));
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  background: var(--bg);
+  box-shadow: none;
+}
+.admin-split #product-form h2 {
+  display: block;
+  margin: 10px 0 22px;
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+  font-size: 30px;
+}
+.back-link {
+  display: inline-block;
+  color: var(--terra);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+#product-form .pf {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.pf-hint {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.pf-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 13px;
+}
+.pf-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pf-file {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pf-file input {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  font-size: 13px;
+}
+.pf-actions {
+  grid-column: 1 / -1;
+  position: sticky;
+  bottom: -36px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0 -2px;
+  padding: 14px 2px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.pf-actions .btn,
+.pf-actions .btn-outline {
+  padding: 12px 26px;
+  font-size: 14px;
+}
+@media (max-width: 860px) {
+  #product-form .pf {
+    grid-template-columns: 1fr;
+  }
+}
+/* Quản lý khách hàng: 3 ô tổng quan, form thêm/sửa, khung chi tiết, bảng danh sách */
+.cu-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.cu-stat span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
+.cu-stat b {
+  display: block;
+  margin-top: 6px;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.cu-stat.is-active b {
+  color: #2f6b3f;
+}
+.cu-stat.is-locked b {
+  color: #8a2230;
+}
+.cf-security {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.cf-security h4 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  color: var(--ink);
+}
+.cf-security h5 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.cf-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.cf-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+/* Bảng danh sách: mỗi dòng là một khách, nút thao tác nằm dưới tên */
+#customers .admin-table.customers-table {
+  min-width: 680px;
+  border: 0;
+}
+#customers .admin-table.customers-table th {
+  padding: 12px 18px;
+  text-align: left !important;   /* thắng luật "căn giữa mọi tiêu đề bảng" ở cuối file */
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+#customers .admin-table.customers-table td,
+#customers .admin-table.customers-table tr:nth-child(even) td {
+  padding: 16px 18px;
+  text-align: left;
+  border-right: 0;
+  background: transparent;
+  vertical-align: top;
+}
+#customers .admin-table.customers-table th:nth-child(n+2),
+#customers .admin-table.customers-table td:nth-child(n+2) {
+  width: 1%;
+}
+#customers .admin-table.customers-table th:nth-child(2),
+#customers .admin-table.customers-table td:nth-child(2) {
+  padding-right: 52px;   /* đẩy cột "Ngày đăng ký" sang trái cho cân đối */
+}
+#customers .admin-table.customers-table td.cu-info {
+  white-space: normal;
+}
+.cu-name {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.cu-sub {
+  display: block;
+  margin-top: 3px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.cu-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.cu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.cu-btn .ico {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.cu-btn:hover {
+  border-color: var(--green);
+  background: var(--bg);
+}
+.cu-btn.is-lock {
+  border-color: #e5c3a8;
+  color: #a8531f;
+}
+.cu-btn.is-lock:hover {
+  background: #f6e6da;
+}
+.cu-btn.is-unlock {
+  border-color: #a9d0b3;
+  color: #2f6b3f;
+}
+.cu-btn.is-unlock:hover {
+  background: #e1f0e5;
+}
+.cu-btn.is-del {
+  border-color: #e3b9be;
+  color: #8a2230;
+}
+.cu-btn.is-del:hover {
+  background: #f6e1e3;
+}
+@media (max-width: 860px) {
+  .cu-stats {
+    grid-template-columns: 1fr;
+  }
+}
+.admin-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.admin-pager .pagination {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+}
+.admin-pager .pagination a {
+  min-width: 34px;
+  height: 34px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.admin-pager .pagination .dots {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  color: var(--muted);
+}
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.admin-toolbar input,
+.admin-toolbar select {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.admin-toolbar input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+}
+/* Nút tìm kiếm / thống kê trong khu vực quản trị: chỉ minh họa giao diện, không thực hiện gì. */
+.admin-search-btn {
+  height: 40px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 20px;
+  background: var(--wine, #4b1f21);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-search-btn:hover {
+  opacity: .9;
+}
+.admin-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.admin-toolbar input[type="date"] {
+  flex: none;
+  min-width: 0;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 5px;
+}
+.admin-box .admin-table th,
+.admin-box .admin-table td {
+  padding: 10px 8px;
+}
+.confirm-box {
+  display: none;
+}
+.confirm-box:target,
+.confirm-box.open {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(36, 16, 22, .45);
+}
+.confirm-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px;
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px rgba(36, 16, 22, .3);
+}
+.confirm-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.confirm-body p {
+  margin: 0;
+}
+.confirm-thumb {
+  flex: none;
+  width: 64px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(36, 16, 22, .25);
+}
+.confirm-card h3 {
+  margin: 0 0 10px;
+}
+.confirm-card p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.confirm-actions .admin-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.confirm-actions .admin-btn-danger {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fff;
+}
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.admin-login-wrap .login {
+  width: 100%;
+  margin: 0;
+}
+.admin-login-logo {
+  display: block;
+  width: 72px;
+  margin: 0 auto 8px;
+}
+.login-error {
+  margin: 4px 0 0;
+  color: var(--danger);
+  font-size: 14px;
+  text-align: center;
+}
+.admin-table .num {
+  padding-right: 18px;
+}
+/* Trang chi tiết đơn hàng trong khu vực quản trị */
+.od-card {
+  max-width: 920px;
+  margin-top: 18px;
+  padding: 25px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.od-card p {
+  margin: 0 0 14px;
+}
+.od-card hr {
+  margin: 18px 0 4px;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+.od-card .cart-row {
+  grid-template-columns: 85px 1fr 90px 130px;
+}
+.od-card .cart-row b {
+  text-align: right;
+}
+.od-card .cart-total {
+  padding-bottom: 18px;
+}
+@media (max-width: 600px) {
+  .od-card {
+  padding: 16px;
+}
+  .od-card .cart-row {
+  grid-template-columns: 70px 1fr auto;
+  gap: 10px;
+}
+}
+/* Chi tiết đơn hàng: khu xử lý đơn */
+.odx-hint {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.odx-hint:last-child {
+  margin-bottom: 0;
+}
+.odx-process {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.odx-process .btn,
+.odx-process .admin-btn {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
+/* ---------- Căn chỉnh chung cho các bảng quản trị ---------- */
+.admin-layout .admin-table th,
+.admin-layout .admin-table td {
+  padding: 14px 12px;
+  vertical-align: middle;
+}
+.admin-layout .admin-table th.num,
+.admin-layout .admin-table td.num {
+  text-align: right;
+  padding-right: 28px;
+}
+.admin-layout .admin-table .admin-btn {
+  margin: 2px 4px 2px 0;
+}
+.admin-layout .admin-table .status {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Thanh công cụ (tìm kiếm, lọc): các ô cùng chiều cao, nút Tìm/Lọc cùng hàng */
+.admin-toolbar {
+  align-items: center;
+}
+.admin-toolbar input,
+.admin-toolbar select {
+  height: 40px;
+  box-sizing: border-box;
+}
+
+/* ---------- Bảng quản trị có đường kẻ chia cột, mỗi dòng đúng một hàng ---------- */
+.admin-layout .admin-table {
+  border: 1px solid var(--line);
+}
+.admin-layout .admin-table th,
+.admin-layout .admin-table td {
+  border-right: 1px solid var(--line);
+  white-space: nowrap;
+}
+.admin-layout .admin-table th:last-child,
+.admin-layout .admin-table td:last-child {
+  border-right: 0;
+}
+.admin-layout .admin-table th {
+  border-right-color: rgba(251, 247, 242, .18);
+}
+.admin-layout .admin-table th:last-child {
+  border-right: 0;
+}
+
+/* Danh sách sản phẩm: bảng cuộn ngang thay vì ép chữ xuống dòng */
+.admin-table.products-table {
+  min-width: 1000px;
+}
+.admin-box .admin-table.products-table td:nth-child(3),
+.admin-box .admin-table.products-table td:nth-child(4) {
+  white-space: nowrap;
+}
+
+/* ======================================================================
+   ĐỒNG BỘ CHỮ + CĂN GIỮA CỘT TRONG TRANG QUẢN TRỊ
+   Thang cỡ chữ: tiêu đề khối 24px · tiêu đề phụ 18px · nội dung/bảng/ô nhập 14px · nút, nhãn trạng thái 13px
+   ====================================================================== */
+.admin-layout .admin-table th,
+.admin-layout .admin-table td {
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+.admin-layout .admin-table th {
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.admin-layout .admin-table td {
+  font-weight: 400;
+}
+.admin-layout .admin-table th:nth-child(n),
+.admin-layout .admin-table td:nth-child(n),
+.admin-layout .admin-table th.num,
+.admin-layout .admin-table td.num {
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+}
+.admin-layout .admin-table td small {
+  font-size: 13px;
+}
+.admin-layout .admin-table .thumb {
+  margin: 0 auto;
+}
+
+/* Nút và nhãn trạng thái trong bảng: cùng cỡ chữ, cùng chiều cao */
+.admin-box .admin-table td .admin-btn,
+.admin-layout .admin-table .admin-btn {
+  padding: 7px 12px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.admin-layout .status {
+  padding: 5px 12px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* Thanh công cụ, tab, phân trang, ghi chú: cùng cỡ chữ 14px */
+.admin-toolbar input,
+.admin-toolbar select,
+.admin-toolbar label {
+  font-size: 14px;
+}
+.admin-pager .pagination a {
+  font-size: 14px;
+}
+.admin-layout .sidebar a {
+  font-size: 14px;
+}
+
+/* Chia cột bảng sản phẩm */
+.admin-table.products-table {
+  table-layout: auto;
+  min-width: 1120px;
+}
+.admin-table.products-table th:nth-child(1),
+.admin-table.products-table td:nth-child(1) { width: 8%; }
+.admin-table.products-table th:nth-child(2),
+.admin-table.products-table td:nth-child(2) { width: 8%; }
+.admin-table.products-table th:nth-child(3),
+.admin-table.products-table td:nth-child(3) { width: auto; }
+.admin-table.products-table th:nth-child(4),
+.admin-table.products-table td:nth-child(4) { width: 1%; }
+.admin-table.products-table th:nth-child(5),
+.admin-table.products-table td:nth-child(5) { width: 11%; }
+.admin-table.products-table th:nth-child(6),
+.admin-table.products-table td:nth-child(6) { width: 12%; }
+.admin-table.products-table th:nth-child(7),
+.admin-table.products-table td:nth-child(7) { width: 16%; }
+
+/* Cột tên căn trái */
+.admin-layout .products-table th:nth-child(3),
+.admin-layout .products-table td:nth-child(3) {
+  text-align: left;
+}
+
+/* Thanh bên (phần đỏ) nhỏ gọn hơn */
+@media (min-width: 861px) {
+  .admin-layout {
+    grid-template-columns: 190px 1fr;
+  }
+  .admin-layout .sidebar {
+    padding: 20px 10px;
+  }
+  .admin-layout .sidebar h2 {
+    font-size: 20px;
+  }
+  .admin-layout .sidebar a {
+    gap: 8px;
+    padding: 10px;
+    font-size: 13px;
+  }
+  .admin-layout .sidebar .ico {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Căn giữa tiêu đề của tất cả các cột trong bảng */
+.table th,
+table th {
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+/* Đảm bảo nội dung các dòng phía dưới vẫn căn trái (hoặc giữ nguyên) */
+.table td,
+table td {
+    text-align: left; /* Hoặc căn theo mặc định của bạn */
+    vertical-align: middle;
+}
+
+/* Phân loại (sản phẩm): nội dung căn trái, tiêu đề vẫn ở giữa */
+.admin-layout .products-table td:nth-child(4) {
+  text-align: left;
+}
+
+/* Form sản phẩm: dùng font của website thay vì font mặc định (monospace) của textarea */
+
+/* ======================================================================
+   Tất cả bảng quản trị: mỗi cột co vừa đúng dòng dài nhất, lề trái = lề phải.
+   Mỗi bảng chỉ có 1 cột "linh hoạt" (tên / email / địa chỉ) nhận phần chỗ trống còn lại.
+   ====================================================================== */
+.admin-layout .admin-table.products-table {
+  table-layout: auto;
+  width: 100%;
+  min-width: 0;
+}
+.admin-layout .admin-table.products-table th:nth-child(n),
+.admin-layout .admin-table.products-table td:nth-child(n) {
+  width: 1%;
+  padding-left: 18px;
+  padding-right: 18px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+/* Cột linh hoạt */
+.admin-layout .admin-table.products-table th:nth-child(3),
+.admin-layout .admin-table.products-table td:nth-child(3) {
+  width: auto;
+}
+/* Phân loại: căn giữa để lề hai bên đều nhau ở mọi dòng */
+.admin-layout .admin-table.products-table td:nth-child(4) {
+  text-align: center;
+}
+
+/* ======================================================================
+   Cột tiền căn phải (cả tiêu đề lẫn số liệu)
+   ====================================================================== */
+.admin-layout .admin-table.products-table th:nth-child(5),
+.admin-layout .admin-table.products-table td:nth-child(5) {
+  text-align: right;
+  padding-right: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ======================================================================
+   Nút thao tác trong bảng (Xem, Sửa, Khóa, Xóa...)
+   ====================================================================== */
+.admin-layout .admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 6px 12px;
+  border: 1px solid #d8ccbd;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--terra);
+  font: 500 13px/1.2 var(--sans);
+  letter-spacing: .01em;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(43, 20, 25, .06);
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+}
+.admin-layout .admin-btn:hover {
+  border-color: var(--terra);
+  background: var(--terra);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(122, 42, 49, .22);
+  transform: translateY(-1px);
+}
+.admin-layout .admin-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.admin-layout .admin-btn:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+/* Nút Xóa: sắc đỏ để dễ phân biệt thao tác nguy hiểm */
+.admin-layout .admin-btn-danger,
+.admin-layout .admin-btn[href^="#deleted"] {
+  border-color: #e3c4c8;
+  color: #9a2b38;
+}
+.admin-layout .admin-btn-danger:hover,
+.admin-layout .admin-btn[href^="#deleted"]:hover {
+  border-color: #9a2b38;
+  background: #9a2b38;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(154, 43, 56, .25);
+}
+
+/* ======================================================================
+   Form thêm/sửa sản phẩm: giao diện giống trang chi tiết sách trên website
+   (ảnh bìa bên trái, thông tin bên phải, tab Mô tả / Thông tin chi tiết).
+   Mỗi mục là một ô nhập, bấm vào là sửa được.
+   ====================================================================== */
+#product-form:target {
+  padding: 36px max(24px, calc((100% - 1160px) / 2)) 0;
+}
+#product-form .pf {
+  display: block;
+}
+.pf-note {
+  margin: -6px 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+#product-form .product-detail {
+  display: grid;
+  grid-template-columns: minmax(0, .4fr) minmax(0, .6fr);
+  gap: 56px;
+  padding: 44px 48px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbf7f2;
+  box-shadow: 0 18px 44px rgba(47, 23, 29, .08);
+}
+#product-form .product-detail > div {
+  min-width: 0;
+}
+#product-form .pd-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: start;
+  padding: 34px 24px 24px;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 40%, #fff 0%, #F3EADF 70%, #EADFD2 100%);
+}
+#product-form .pf-cover {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 18px;
+}
+#product-form .pf-cover.has-img {
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  overflow: visible;
+  box-shadow: 0 22px 36px rgba(47, 23, 29, .28), 0 4px 10px rgba(47, 23, 29, .18);
+}
+#product-form .pf-cover.has-img img {
+  border-radius: 4px;
+  object-fit: contain;
+}
+#product-form .pd-cover .pf-file {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+#product-form .pd-cover .pf-hint {
+  text-align: center;
+}
+
+/* Ô nhập nằm ngay trên giao diện: viền nét đứt, đậm lên khi rê chuột / bấm vào */
+#product-form .pd-info input,
+#product-form .pd-info select,
+#product-form .pd-info textarea,
+#product-form .pd-panel input:not([type="file"]),
+#product-form .pd-panel textarea,
+#product-form .pd-panel select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+}
+#product-form .pd-info input:hover,
+#product-form .pd-info select:hover,
+#product-form .pd-info textarea:hover,
+#product-form .pd-panel input:hover,
+#product-form .pd-panel textarea:hover,
+#product-form .pd-panel select:hover {
+  border-color: var(--terra);
+}
+#product-form .pd-info input:focus,
+#product-form .pd-info select:focus,
+#product-form .pd-info textarea:focus,
+#product-form .pd-panel input:focus,
+#product-form .pd-panel textarea:focus,
+#product-form .pd-panel select:focus {
+  border: 1px solid var(--terra);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(122, 42, 49, .12);
+}
+#product-form textarea {
+  resize: vertical;
+}
+
+#product-form .pd-info .pf-tag {
+  width: auto;
+  max-width: 100%;
+  padding: 6px 14px;
+  border: 1px dashed transparent;
+  border-radius: 999px;
+  background: rgba(122, 42, 49, .09);
+  color: var(--terra);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+#product-form .pd-info .pf-name {
+  margin: 14px 0 6px;
+  padding: 6px 12px;
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #471a1d;
+}
+#product-form .pd-byline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+#product-form .pd-byline .pf-inline {
+  flex: 1;
+  width: auto;
+  font-weight: 600;
+}
+#product-form .product-detail .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 22px;
+  color: var(--terra);
+  font: 600 32px var(--serif);
+}
+#product-form .pd-info .pf-price {
+  width: 220px;
+  padding: 4px 12px;
+  color: var(--terra);
+  font: 600 30px var(--serif);
+}
+#product-form .pd-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0 0 26px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--line);
+}
+#product-form .pd-meta > div {
+  padding: 13px 18px;
+  background: #fff;
+}
+#product-form .pd-meta dt {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#product-form .pd-meta dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15.5px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+#product-form .pd-meta dd.in-stock::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #5E8C61;
+  vertical-align: 1px;
+}
+#product-form .pd-sub {
+  margin: 0 0 8px;
+  color: var(--green);
+  font: 600 20px var(--serif);
+}
+#product-form .pf-hl {
+  min-height: 96px;
+  margin-bottom: 22px;
+}
+#product-form .pf-sell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+#product-form .pf-sell label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Khối Mô tả / Thông tin chi tiết (tab) */
+#product-form .pd-more {
+  margin-top: 28px;
+  padding: 8px 48px 40px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbf7f2;
+  box-shadow: 0 12px 32px rgba(47, 23, 29, .06);
+}
+#product-form .pd-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0 -8px 26px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+#product-form .pd-tabs button {
+  position: relative;
+  padding: 18px 18px 16px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: 600 15px var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+}
+#product-form .pd-tabs button:hover {
+  color: var(--terra);
+}
+#product-form .pd-tabs button[aria-selected="true"] {
+  color: var(--green);
+}
+#product-form .pd-tabs button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: -1px;
+  left: 14px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--terra);
+}
+#product-form .pd-panel[hidden] {
+  display: none;
+}
+#product-form .pd-panel h2 {
+  margin: 0 0 14px;
+  color: var(--green);
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+}
+#product-form .pd-panel h3 {
+  margin: 26px 0 8px;
+  color: var(--green);
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+}
+#product-form .pd-panel textarea {
+  display: block;
+  margin: 0 0 14px;
+  min-height: 110px;
+}
+#product-form .pd-spec {
+  width: 100%;
+  max-width: 720px;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+}
+#product-form .pd-spec th,
+#product-form .pd-spec td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 15px;
+}
+#product-form .pd-spec tr:last-child th,
+#product-form .pd-spec tr:last-child td {
+  border-bottom: 0;
+}
+#product-form .pd-spec tr:nth-child(odd) {
+  background: rgba(243, 234, 223, .55);
+}
+#product-form .pd-spec th {
+  width: 34%;
+  color: var(--muted);
+  font-weight: 500;
+}
+#product-form .pd-spec td {
+  color: var(--ink);
+  font-weight: 600;
+}
+#product-form .pf-actions {
+  bottom: 0;
+  margin: 24px -2px 0;
+  padding: 14px 2px 18px;
+}
+@media (max-width: 900px) {
+  #product-form .product-detail {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px 20px;
+  }
+  #product-form .pd-more {
+    padding: 8px 20px 28px;
+  }
+  #product-form .pd-meta,
+#product-form .pf-sell {
+    grid-template-columns: 1fr;
+  }
+  #product-form .pd-info .pf-name {
+    font-size: 28px;
+  }
+}
+
+/* Tiêu đề trong form sản phẩm: bỏ vạch đỏ bên trái của tiêu đề trang; ảnh bìa hiện đúng tỉ lệ thật */
+.admin-split #product-form .pd-info h2,
+.admin-split #product-form .pd-panel h2 {
+  padding-left: 0;
+  border-left: 0;
+}
+.admin-split #product-form .pd-info h2.pd-sub {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+.admin-split #product-form .pd-panel h2 {
+  margin: 0 0 14px;
+  font-size: 26px;
+}
+#product-form .pf-cover.has-img {
+  aspect-ratio: auto;
+}
+#product-form .pf-cover.has-img img {
+  height: auto;
+  object-fit: fill;
+}
+#product-form .pd-spec th,
+#product-form .pd-spec td {
+  text-align: left;
+}
+
+/* "Giới thiệu về “...”": tên tự nhập ngay trong tiêu đề */
+#product-form .pd-panel h2.pf-intro {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#product-form .pd-panel h2.pf-intro input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 12px;
+  font: 500 24px var(--serif);
+  color: var(--green);
+}
+
+/* Thao tác sửa / xóa dạng biểu tượng (bảng sản phẩm) */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  border-radius: 8px;
+  color: var(--ink);
+  transition: background .15s ease;
+}
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-btn.icon-del {
+  color: #d9534f;
+}
+.icon-btn:hover {
+  background: rgba(122, 42, 49, .1);
+}
+.icon-btn.icon-del:hover {
+  background: rgba(217, 83, 79, .12);
+}
+
+/* Trang chi tiết khách hàng (customer-detail.html) */
+.cdp {
+  max-width: 900px;
+}
+.cdp-card {
+  margin: 18px 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 6px 18px rgba(47, 23, 29, .06);
+}
+.cdp-sec {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cdp-sec:last-of-type {
+  border-bottom: 0;
+}
+.cdp-sec h3 {
+  margin: 0 0 16px;
+  font-size: 17px;
+  color: var(--ink);
+}
+.cdp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+  margin: 0;
+}
+.cdp-grid dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+.cdp-grid dd {
+  margin: 4px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cdp-grid .status {
+  font-size: 13px;
+  font-weight: 600;
+}
+.cdp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cdp-stat {
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+.cdp-stat span {
+  font-size: 13px;
+  color: var(--muted);
+}
+.cdp-stat b {
+  display: block;
+  margin-top: 6px;
+  font-size: 26px;
+  color: var(--green);
+}
+.cdp-orders {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cdp-order {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.cdp-order:last-child {
+  border-bottom: 0;
+}
+.cdp-order b {
+  display: block;
+  font-size: 16px;
+}
+.cdp-order small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.cdp-order .cdp-money {
+  min-width: 100px;
+  text-align: right;
+  font-weight: 700;
+}
+.cdp-order .admin-btn {
+  white-space: nowrap;
+}
+.cdp-empty {
+  margin: 0;
+  color: var(--muted);
+}
+.cdp-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+.cdp-actions .btn,
+.cdp-actions .btn-outline {
+  padding: 11px 24px;
+  font-size: 14px;
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .cdp-grid,
+.cdp-stats {
+    grid-template-columns: 1fr;
+  }
+  .cdp-order {
+    grid-template-columns: 1fr auto auto;
+  }
+  .cdp-order .admin-btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+/* =====================================================================
+   Link "Xem →": không khung, có mũi tên dài để biết bấm vào xem chi tiết
+   (Top 5 khách hàng, Quản lý đơn hàng)
+   ===================================================================== */
+.view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 2px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  cursor: pointer;
+}
+.view-link::after {
+  content: "";
+  width: 26px;
+  height: 10px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 10'><path d='M1 5h23M19 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 10'><path d='M1 5h23M19 1l5 4-5 4' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+  transition: transform .2s ease;
+}
+.view-link:hover,
+.view-link:focus-visible {
+  color: #7a2a31;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.view-link:hover::after,
+.view-link:focus-visible::after {
+  transform: translateX(5px);
+}
+.view-link[aria-expanded="true"]::after {
+  transform: rotate(-90deg);
+}
+.view-link[aria-expanded="true"]:hover::after {
+  transform: rotate(-90deg) translateX(5px);
+}
+
+/* =====================================================================
+   Trang sửa / thêm khách hàng (customer-edit.html)
+   ===================================================================== */
+.ce {
+  max-width: 1080px;
+  margin-top: 14px;
+}
+.ce-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+  padding: 22px 26px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4b1a1d 0%, #6d2a31 100%);
+  color: #fbf7f2;
+  box-shadow: 0 10px 24px rgba(75, 26, 29, .22);
+}
+.ce-avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(251, 247, 242, .16);
+  border: 1px solid rgba(251, 247, 242, .35);
+  font-size: 26px;
+  font-weight: 700;
+}
+.ce-avatar .ico {
+  width: 28px;
+  height: 28px;
+  stroke: #fbf7f2;
+}
+.ce-head-text {
+  flex: 1;
+  min-width: 0;
+}
+.ce-head h1 {
+  margin: 2px 0 4px;
+  font-size: 26px;
+  color: #fbf7f2;
+}
+.ce-crumb,
+.ce-sub {
+  margin: 0;
+  font-size: 13.5px;
+  color: rgba(251, 247, 242, .78);
+}
+.ce-head .status {
+  flex: none;
+  padding: 7px 14px;
+  font-weight: 600;
+}
+.ce-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+}
+.ce-form {
+  display: grid;
+  gap: 18px;
+}
+.ce-side {
+  display: grid;
+  gap: 18px;
+  position: sticky;
+  top: 18px;
+}
+.ce-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  box-shadow: 0 6px 18px rgba(47, 23, 29, .05);
+}
+.ce-card[hidden] {
+  display: none;
+}
+.ce-card h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: var(--ink);
+}
+.ce-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.ce-card-head h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--ink);
+}
+.ce-card-head p {
+  margin: 3px 0 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.ce-step {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fbf7f2;
+  font-size: 14px;
+  font-weight: 700;
+}
+.ce-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+}
+.ce-full {
+  grid-column: 1 / -1;
+}
+.ce-field {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ce-field i {
+  font-style: normal;
+  color: var(--danger);
+}
+.ce-field input:not([type="radio"]):not([type="checkbox"]),
+.ce-field textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  transition: border-color .2s, box-shadow .2s;
+}
+.ce-field input:not([type="radio"]):not([type="checkbox"]) {
+  height: 46px;
+}
+.ce-field textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+.ce-field input:focus,
+.ce-field textarea:focus {
+  outline: 0;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(75, 26, 29, .12);
+}
+.ce-field input[readonly] {
+  background: var(--bg);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+.ce-seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.ce-seg label {
+  display: block;
+  cursor: pointer;
+}
+.ce-seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.ce-seg span {
+  display: block;
+  padding: 14px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.ce-seg b {
+  display: block;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.ce-seg small {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.ce-seg input:checked + span {
+  border-color: var(--green);
+  background: rgba(75, 26, 29, .06);
+  box-shadow: 0 0 0 3px rgba(75, 26, 29, .1);
+}
+.ce-seg input:focus-visible + span {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+.ce-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.ce-actions .btn,
+.ce-actions .btn-outline {
+  padding: 13px 30px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ce-note {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.ce-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.ce-stats div {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.ce-stats span {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.ce-stats b {
+  display: block;
+  margin-top: 4px;
+  font-size: 24px;
+  color: var(--green);
+}
+.ce-side .ce-field {
+  margin-bottom: 14px;
+}
+.ce-side .cf-check {
+  margin: 4px 0 16px;
+}
+.ce-block {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  font-size: 13.5px;
+  text-align: center;
+  cursor: pointer;
+}
+.ce-danger {
+  border-color: rgba(138, 34, 48, .35);
+  background: #fdf6f5;
+}
+.ce-danger h3 {
+  color: var(--danger);
+}
+.ce-del {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px solid var(--danger);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--danger);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.ce-del:hover:not(:disabled) {
+  background: var(--danger);
+  color: #fff;
+}
+.ce-del:disabled {
+  border-color: var(--line);
+  color: #a79b94;
+  cursor: not-allowed;
+}
+#ce-confirm .admin-btn {
+  font-size: 14px;
+  padding: 9px 20px;
+}
+@media (max-width: 960px) {
+  .ce-layout {
+    grid-template-columns: 1fr;
+  }
+  .ce-side {
+    position: static;
+  }
+}
+@media (max-width: 560px) {
+  .ce-fields,
+.ce-seg {
+    grid-template-columns: 1fr;
+  }
+  .ce-head {
+    flex-wrap: wrap;
+  }
+}
+.ce-field input[readonly]:not([type="radio"]):not([type="checkbox"]) {
+  background: var(--bg);
+  color: var(--muted);
+}
+
+/* ---------- Quản lý khách hàng: 3 ô tổng quan, mỗi ô một khung riêng có biểu tượng ---------- */
+.cu-stat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--stat-c, var(--green));
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 4px 14px rgba(47, 23, 29, .05);
+  --stat-c: #4b1a1d;
+  --stat-bg: rgba(75, 26, 29, .09);
+}
+.cu-stat.is-active { --stat-c: #2f6b3f; --stat-bg: rgba(47, 107, 63, .12); }
+.cu-stat.is-locked { --stat-c: #8a2230; --stat-bg: rgba(138, 34, 48, .11); }
+.cu-stat .cu-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--stat-bg);
+  color: var(--stat-c);
+}
+.cu-ico .ico {
+  width: 26px;
+  height: 26px;
+}
+.cu-stat .cu-label {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
+.cu-stat b,
+.cu-stat.is-active b,
+.cu-stat.is-locked b {
+  margin-top: 2px;
+  font-size: 30px;
+  color: var(--stat-c);
+}
+.cu-stat small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+@media (max-width: 760px) {
+  .cu-stats { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mũi tên "Xem >" gọn, chỉ là dấu > ---------- */
+.view-link::after {
+  width: 7px;
+  height: 12px;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 12'><path d='M1 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 12'><path d='M1 1l5 5-5 5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+}
+.view-link { gap: 6px; }
+.view-link:hover::after,
+.view-link:focus-visible::after { transform: translateX(3px); }
+.view-link[aria-expanded="true"]::after { transform: rotate(90deg); }
+.view-link[aria-expanded="true"]:hover::after { transform: rotate(90deg) translateX(3px); }
+
+/* Trang thêm khách: không có cột phải nên form rộng hết cỡ, 2 thẻ nhỏ đứng cạnh nhau */
+.ce-layout.is-solo {
+  grid-template-columns: 1fr;
+}
+.ce-layout.is-solo .ce-form {
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+.ce-layout.is-solo .ce-form > .ce-card:first-child,
+.ce-layout.is-solo .ce-form > .ce-actions {
+  grid-column: 1 / -1;
+}
+.ce-layout.is-solo .ce-form .ce-fields {
+  grid-template-columns: 1fr;
+}
+.ce-layout.is-solo .ce-form > .ce-card:first-child .ce-fields {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 760px) {
+  .ce-layout.is-solo .ce-form { grid-template-columns: 1fr; }
+  .ce-layout.is-solo .ce-form > .ce-card:first-child .ce-fields { grid-template-columns: 1fr; }
+}
+.cu-stat .cu-ico .ico { stroke: currentColor; }
+
+/* ---------- Cột vừa khít: rộng theo dòng dài nhất, lề trái = lề phải ---------- */
+.admin-layout .admin-table.fit-cols {
+  table-layout: auto;
+  width: 100%;
+  min-width: 0;
+}
+.admin-layout .admin-table.fit-cols th,
+.admin-layout .admin-table.fit-cols td {
+  width: auto !important;
+  min-width: 0 !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  white-space: nowrap !important;
+}
+.admin-layout .admin-table.fit-cols .admin-btn { padding: 6px 10px; }
+
+/* =====================================================================
+   Quản lý đơn hàng: tab trạng thái, bộ lọc, danh sách đơn (mỗi đơn một dòng)
+   ===================================================================== */
+/* Icon dạng mặt nạ, nhận màu chữ của phần tử chứa nó */
+.oi {
+  display: inline-block;
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+  background-color: currentColor;
+  -webkit-mask: var(--ic) center / contain no-repeat;
+  mask: var(--ic) center / contain no-repeat;
+  vertical-align: -.2em;
+}
+.oi-grid { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='6.5' height='6.5' rx='1.2'/%3E%3Crect x='13.5' y='4' width='6.5' height='6.5' rx='1.2'/%3E%3Crect x='4' y='13.5' width='6.5' height='6.5' rx='1.2'/%3E%3Crect x='13.5' y='13.5' width='6.5' height='6.5' rx='1.2'/%3E%3C/svg%3E"); }
+.oi-clock { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3.2 2'/%3E%3C/svg%3E"); }
+.oi-check { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12.5l2.7 2.7L16 9.5'/%3E%3C/svg%3E"); }
+.oi-truck { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6.5h11v9.5h-11z'/%3E%3Cpath d='M13.5 9.5h4l3 3.2V16h-7'/%3E%3Ccircle cx='7' cy='17.5' r='1.8'/%3E%3Ccircle cx='17' cy='17.5' r='1.8'/%3E%3C/svg%3E"); }
+.oi-box { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z'/%3E%3Cpath d='M3.5 7.5L12 12l8.5-4.5M12 12v9'/%3E%3C/svg%3E"); }
+.oi-ban { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M5.6 5.6l12.8 12.8'/%3E%3C/svg%3E"); }
+.oi-user { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4 4-6 8-6s8 2 8 6'/%3E%3C/svg%3E"); }
+.oi-calendar { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5' width='17' height='15' rx='2'/%3E%3Cpath d='M3.5 10h17M8 3v4M16 3v4'/%3E%3C/svg%3E"); }
+.oi-pin { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z'/%3E%3Ccircle cx='12' cy='10' r='2.3'/%3E%3C/svg%3E"); }
+.oi-phone { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z'/%3E%3C/svg%3E"); }
+.oi-book { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z'/%3E%3Cpath d='M4 16a4 4 0 0 1 4-4h10'/%3E%3C/svg%3E"); }
+.oi-wallet { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 7.5A2.5 2.5 0 0 1 6.5 5H18v3'/%3E%3Crect x='3.5' y='8' width='17' height='11.5' rx='2.2'/%3E%3Ccircle cx='16.3' cy='13.7' r='1.2'/%3E%3C/svg%3E"); }
+.oi-eye { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z'/%3E%3Ccircle cx='12' cy='12' r='2.8'/%3E%3C/svg%3E"); }
+.oi-search { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M16 16l4.5 4.5'/%3E%3C/svg%3E"); }
+.oi-map { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z'/%3E%3Cpath d='M9 4v14M15 6v14'/%3E%3C/svg%3E"); }
+.oi-bars { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20V10M10 20V4M16 20v-7M22 20H2'/%3E%3C/svg%3E"); }
+.oi-pie { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v9h9'/%3E%3Cpath d='M20.5 15.5A9 9 0 1 1 8.5 3.5'/%3E%3C/svg%3E"); }
+.oi-crown { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8l4.5 4 4-7 4 7 4.5-4-1.8 10.5H5.3z'/%3E%3C/svg%3E"); }
+.oi-sort { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 4v16M7 20l-3-3M7 20l3-3M17 20V4M17 4l-3 3M17 4l3 3'/%3E%3C/svg%3E"); }
+
+/* Màu theo trạng thái, dùng chung cho tab và thẻ đơn */
+.order-tabs a,
+.oc-card {
+  --tc: var(--terra);
+  --tbg: #f4ede4;
+}
+.order-tabs [data-status="wait"],
+.oc-card[data-status="wait"] { --tc: #8a5a12; --tbg: #f6ecd6; }
+.order-tabs [data-status="confirm"],
+.oc-card[data-status="confirm"] { --tc: #2f5d7a; --tbg: #e3edf3; }
+.order-tabs [data-status="ship"],
+.oc-card[data-status="ship"] { --tc: #5b3f8a; --tbg: #ece6f5; }
+.order-tabs [data-status="done"],
+.oc-card[data-status="done"] { --tc: #2f6b3f; --tbg: #e1f0e5; }
+.order-tabs [data-status="cancel"],
+.oc-card[data-status="cancel"] { --tc: #8a2230; --tbg: #f6e1e3; }
+
+/* Tab trạng thái: 6 ô bằng nhau trên một hàng, mỗi ô gồm icon, số đơn và tên */
+.order-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.order-tabs a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "ico num" "lbl lbl";
+  align-items: center;
+  gap: 10px 8px;
+  min-width: 0;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s, transform .1s;
+}
+.order-tabs a:hover {
+  border-color: var(--tc);
+  box-shadow: 0 4px 12px rgba(58, 18, 24, .10);
+}
+.order-tabs a:active {
+  transform: scale(.97);
+}
+.order-tabs .ot-ico {
+  grid-area: ico;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--tbg);
+  color: var(--tc);
+  font-size: 20px;
+  transition: background-color .2s, color .2s;
+}
+.order-tabs .ot-ico .oi {
+  vertical-align: 0;
+}
+.order-tabs b {
+  grid-area: num;
+  justify-self: end;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--tc);
+  transition: color .2s;
+}
+.order-tabs .ot-label {
+  grid-area: lbl;
+  overflow: hidden;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.order-tabs a.active {
+  border-color: #3a1218;
+  background: #3a1218;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(58, 18, 24, .35);
+}
+.order-tabs a.active .ot-ico {
+  background: rgba(255, 255, 255, .18);
+  color: #fff;
+}
+.order-tabs a.active b {
+  color: #fff;
+}
+
+/* Bộ lọc: tìm kiếm + khoảng ngày, rồi tỉnh/thành, sắp xếp và nút Lọc */
+.of-bar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  align-items: end;
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+.of-f {
+  display: block;
+  grid-column: span 3;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.of-f.of-search { grid-column: span 6; }
+.of-f.of-wide { grid-column: span 4; }
+.of-lbl {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.of-lbl .oi {
+  color: var(--terra);
+}
+.of-f input,
+.of-f select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+  margin-top: 6px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+.of-f input:focus,
+.of-f select:focus {
+  outline: 0;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(75, 26, 29, .12);
+}
+.of-btns {
+  grid-column: span 4;
+}
+.of-btns .admin-search-btn {
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Danh sách đơn: mỗi đơn một dòng */
+.oc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.oc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  transition: box-shadow .2s, border-color .2s;
+}
+.oc-card:hover {
+  border-color: var(--tc);
+  box-shadow: 0 6px 18px rgba(58, 18, 24, .10);
+}
+.oc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.oc-code {
+  margin: 0 0 4px;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green);
+}
+.oc-meta,
+.oc-facts {
+  display: flex;
+  gap: 6px 18px;
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.oc-meta {
+  flex-wrap: wrap;
+}
+.oc-badge {
+  flex: none;
+  padding: 6px 14px 6px 12px;
+  border-radius: 999px;
+  background: var(--tbg);
+  color: var(--tc);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.oc-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "addr facts" "total facts";
+  gap: 12px 24px;
+  align-items: center;
+}
+.oc-addr {
+  grid-area: addr;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.oc-addr .oi {
+  margin-top: 2px;
+  color: var(--terra);
+}
+.oc-addr b {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+.oc-addr small {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.oc-facts {
+  grid-area: facts;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.oc-total {
+  grid-area: total;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 0 14px;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.oc-total b {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+}
+.oc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.oc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 150px;
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.oc-btn:hover {
+  border-color: var(--green);
+  background: #f4ede4;
+}
+.oc-btn-confirm { --bc: #2f5d7a; }
+.oc-btn-ship { --bc: #5b3f8a; }
+.oc-btn-done { --bc: #2f6b3f; }
+.oc-btn-confirm,
+.oc-btn-ship,
+.oc-btn-done {
+  border-color: var(--bc);
+  background: var(--bc);
+  color: #fff;
+}
+.oc-btn-confirm:hover,
+.oc-btn-ship:hover,
+.oc-btn-done:hover {
+  border-color: var(--bc);
+  background: var(--bc);
+  color: #fff;
+  filter: brightness(.88);
+}
+.oc-btn-danger {
+  border-color: #d4a3a9;
+  color: #8a2230;
+}
+.oc-btn-danger:hover {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fff;
+}
+.oc-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 150px;
+  justify-content: center;
+  height: 42px;
+  color: var(--tc);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .order-tabs { grid-template-columns: repeat(3, 1fr); }
+  .of-f,
+.of-f.of-search,
+.of-f.of-wide,
+.of-btns { grid-column: span 6; }
+}
+@media (max-width: 800px) {
+  .oc-body { grid-template-columns: 1fr; grid-template-areas: "addr" "total" "facts"; }
+  .oc-facts { align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .order-tabs { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .of-f,
+.of-f.of-search,
+.of-f.of-wide,
+.of-btns { grid-column: 1 / -1; }
+  .oc-btn,
+.oc-note { flex: 1 1 100%; }
+}
+
+/* =====================================================================
+   Thống kê: 4 khối (doanh thu, đơn theo trạng thái, Top 5 khách hàng, Top 5 sách)
+   ===================================================================== */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.stat-panel {
+  --pc: #7a2a31;
+  --pbg: #f4e3e4;
+  min-width: 0;
+  padding: 18px 20px 22px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--pc);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(43, 20, 25, .06);
+}
+.stat-panel:nth-child(2) { --pc: #2f5d7a; --pbg: #e3edf3; }
+.stat-panel:nth-child(3) { --pc: #8a5a12; --pbg: #f6ecd6; }
+.stat-panel:nth-child(4) { --pc: #2f6b3f; --pbg: #e1f0e5; }
+.stat-wide {
+  grid-column: 1 / -1;
+}
+.stat-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.sp-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--pbg);
+  color: var(--pc);
+  font-size: 18px;
+}
+.sp-ico .oi {
+  vertical-align: 0;
+}
+.stats-note {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Doanh thu theo tháng: cột tháng hiện tại đậm màu */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 200px;
+  padding-top: 22px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+.bar-col .bar {
+  width: 100%;
+  max-width: 46px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, #d4a0a5, #ecd3d5);
+}
+.bar-col.now .bar {
+  background: linear-gradient(180deg, #7a2a31, #b0545c);
+}
+.bar-val {
+  font-size: 12px;
+  color: var(--muted);
+}
+.bar-col.now .bar-val {
+  font-weight: 700;
+  color: var(--terra);
+}
+.bar-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Đơn hàng theo trạng thái: cùng bảng màu với tab trạng thái ở Quản lý đơn hàng */
+.hbar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 32px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+.hbar-row b {
+  text-align: right;
+  color: var(--ink);
+}
+.hbar-track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1e9df;
+}
+.hbar {
+  height: 100%;
+  border-radius: 999px;
+}
+.hbar-wait { background: #d9a441; }
+.hbar-confirm { background: #5b8fb0; }
+.hbar-ship { background: #8a6bc0; }
+.hbar-done { background: #4f9a63; }
+.hbar-cancel { background: #c4505f; }
+
+/* Bảng Top 5: tiêu đề tối, tên căn trái, số căn giữa, tiền căn phải */
+#stats .top-customers,
+#stats .top-books {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+#stats .top-customers { min-width: 640px; }
+#stats .top-books { min-width: 520px; }
+#stats .top-customers th,
+#stats .top-customers td,
+#stats .top-books th,
+#stats .top-books td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+}
+#stats .top-customers th,
+#stats .top-books th {
+  border-bottom: 0;
+  background: #271218;
+  color: #fbf7f2;
+  font-weight: 700;
+}
+#stats .top-customers th:nth-child(1),
+#stats .top-customers td:nth-child(1) { width: 44%; text-align: left; }
+#stats .top-customers th:nth-child(2),
+#stats .top-customers td:nth-child(2) { width: 16%; }
+#stats .top-customers th:nth-child(3),
+#stats .top-customers td:nth-child(3) { width: 24%; text-align: right; }
+#stats .top-customers th:nth-child(4),
+#stats .top-customers td:nth-child(4) { width: 16%; }
+#stats .top-books th:nth-child(1),
+#stats .top-books td:nth-child(1) { width: 12%; }
+#stats .top-books th:nth-child(2),
+#stats .top-books td:nth-child(2) { width: 42%; text-align: left; }
+#stats .top-books th:nth-child(3),
+#stats .top-books td:nth-child(3) { width: 18%; }
+#stats .top-books th:nth-child(4),
+#stats .top-books td:nth-child(4) { width: 28%; text-align: right; }
+#stats .top-customers td.num,
+#stats .top-books td.num {
+  font-weight: 700;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+#stats .top-customers tr.cust-row td {
+  background: rgba(122, 42, 49, .06);
+  font-weight: 600;
+}
+#stats .top-books tr:nth-child(even) td {
+  background: #faf5ef;
+   }
+#stats .top-customers tr.cust-row:hover td,
+#stats .top-books tr:hover td {
+  background: #eadbd0;
+}
+#stats .top-customers tr:last-child td,
+#stats .top-books tr:last-child td {
+  border-bottom: 0;
+}
+#stats .top-customers .view-link {
+  color: var(--terra);
+  font-weight: 700;
+}
+#stats .top-customers .view-link:hover {
+  color: var(--green);
+}
+#stats .top-customers tr.cust-order td {
+  padding: 9px 16px;
+  background: #f3eadf;
+  text-align: left;
+}
+
+/* Huy hiệu thứ hạng: vàng, bạc, đồng */
+.rank {
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #f4ede4;
+  color: var(--terra);
+  font-size: 13px;
+  font-weight: 700;
+}
+#stats .top-books .rank {
+  margin-right: 0;
+}
+.rank-1 { background: #f6e3a8; color: #7a5a00; }
+.rank-2 { background: #e6e8ec; color: #4a5568; }
+.rank-3 { background: #f1d3b8; color: #8a4b1a; }
+
+/* Dòng đơn hàng mở rộng: mã đơn trái, ngày đặt ở giữa, tiền và thao tác bên phải */
+.stats-order-detail {
+  display: grid;
+  grid-template-columns: minmax(90px, .8fr) minmax(180px, 1.4fr) minmax(110px, .8fr) minmax(125px, auto);
+  align-items: center;
+  gap: 8px 18px;
+  padding: 3px 4px;
+}
+.stats-order-code {
+  font-weight: 700;
+  color: var(--green);
+}
+.stats-order-detail > span:nth-child(2) {
+  justify-self: center;
+  color: var(--muted);
+}
+.stats-order-detail strong {
+  justify-self: end;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.stats-order-detail .view-link {
+  justify-self: end;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .stat-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .stats-order-detail { grid-template-columns: 1fr 1fr; }
+  .stats-order-detail > span:nth-child(2) { justify-self: end; }
+  .stats-order-detail strong,
+.stats-order-detail .view-link { justify-self: start; }
+}
+@media (max-width: 480px) {
+  .stats-order-detail { grid-template-columns: 1fr; gap: 6px; }
+  .stats-order-detail > span:nth-child(2),
+.stats-order-detail strong,
+.stats-order-detail .view-link { justify-self: start; }
+}
