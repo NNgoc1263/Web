@@ -2604,7 +2604,7 @@ table td {
 }
 #stats .top-books tr:nth-child(even) td {
   background: #faf5ef;
-   }
+}
 #stats .top-customers tr.cust-row:hover td,
 #stats .top-books tr:hover td {
   background: #eadbd0;
