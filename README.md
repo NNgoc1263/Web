@@ -11,7 +11,7 @@ pages/
   admin/              Khu quản trị: login.html, index.html (bảng điều khiển), order-detail.html
 assets/
   css/                base.css (dùng chung) · site.css (website) · admin.css (quản trị)
-  js/                 flash, pagination, search (ô tìm kiếm đầu trang), category (lọc theo thể loại), stepper, cart, product, checkout (website)
+  js/                 flash, pagination, search (ô tìm kiếm đầu trang), category (lọc theo thể loại), stepper, product (website)
   js/admin/           auth (đăng nhập), data (dữ liệu minh họa đơn hàng), dashboard (form sản phẩm/khách hàng, chi tiết khách, tìm/thống kê giả lập), tabs (tab trạng thái đơn), order-detail
   images/             Ảnh sách, logo, banner
 ```
