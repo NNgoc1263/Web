@@ -1781,9 +1781,7 @@
   color: #ef6b62;
   font-size: 12px;
 }
-.checkout-link,
-.checkout-voucher button,
-.checkout-bottom-row button {
+.checkout-link {
   padding: 0;
   border: 0;
   background: transparent;
