@@ -53,10 +53,21 @@
         </div>
       </form>
       <div class="head-links">
-        <a class="acct" href="orders.html">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
-          <span><b>Nguyễn Minh Anh</b><small>Tài khoản</small></span>
-        </a>
+        <div class="account-menu">
+          <details class="account-dropdown">
+            <summary class="account-trigger" aria-label="Mở menu tài khoản">
+              <span class="account-avatar" aria-hidden="true">MA</span>
+              <span class="account-name">Minh Anh</span>
+              <svg class="account-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="account-panel">
+              <div class="account-panel-user"><b>Nguyễn Minh Anh</b><small>Thành viên BOOKLY</small></div>
+              <a class="account-menu-link" href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Hồ sơ của tôi</a>
+              <a class="account-menu-link" href="orders.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM3 4h18v4H3zM12 4v16"/></svg>Đơn mua của tôi</a>
+              <a class="account-menu-link account-logout" href="../../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7"/></svg>Đăng xuất</a>
+            </div>
+          </details>
+        </div>
         <a class="cart-head" href="cart.html">
           <svg viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 11h10.6l2-8H6.5"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg>
           <span><b>Giỏ hàng</b><small>2 sản phẩm</small></span>
@@ -71,7 +82,6 @@
       <a href="orders.html">Lịch sử</a>
       <a href="notifications.html">Thông báo</a>
       <a href="contact.html">Liên hệ</a>
-      <a class="nav-logout" href="../../index.html">Đăng xuất</a>
     </nav>
     </div>
     <main>
@@ -99,27 +109,21 @@
       <div class="flash" id="added-23">Đã thêm “Think and Grow Rich” vào giỏ hàng</div>
       <div class="flash" id="added-24">Đã thêm “Trò chơi tư duy (Thinkertoys)” vào giỏ hàng</div>
       <div class="flash" id="added-25">Đã thêm “Trò chơi của những kẻ hiểu luật” vào giỏ hàng</div>
-      <div class="page-title">
-        <div class="container">
-          <div class="breadcrumb">Trang chủ / Kết quả tìm kiếm</div>
-          <h1>Kết quả tìm kiếm</h1>
-        </div>
-      </div>
       <div class="container">
-        <nav class="category-browser" aria-label="Danh mục sách">
-          <a class="category-browser-all" href="category.html#category-groups"><i class="icon icon-grid" aria-hidden="true"></i>Tất cả danh mục<i class="icon icon-chevron-down" aria-hidden="true"></i></a>
-          <a href="category.html?category=Ti%E1%BB%83u%20thuy%E1%BA%BFt">Tiểu thuyết</a>
-          <a href="category.html?category=C%E1%BB%95%20t%C3%ADch">Cổ tích</a>
-          <a href="category.html?category=Trinh%20th%C3%A1m">Trinh thám</a>
-          <a href="category.html?category=Truy%E1%BB%87n%20tranh">Truyện tranh</a>
-          <a href="category.html?category=L%E1%BB%8Bch%20s%E1%BB%AD">Lịch sử</a>
-          <a href="category.html?category=Ph%C3%A1t%20tri%E1%BB%83n%20b%E1%BA%A3n%20th%C3%A2n">Phát triển bản thân</a>
-        </nav>
                 <div class="section-head" id="all-products">
   <h2>Kết quả tìm kiếm</h2>
 </div>
 
 <p class="search-summary"><b>Tìm thấy 24 sách</b><a href="category.html">Xóa bộ lọc</a></p>
+
+<div class="book-filter" aria-label="Lọc sách">
+  <label>Thể loại<select name="category"><option value="">Tất cả thể loại</option><option>Tiểu thuyết</option><option>Cổ tích</option><option>Trinh thám</option><option>Truyện tranh</option><option>Lịch sử</option><option>Phát triển bản thân</option></select></label>
+  <label>Tác giả<input name="author" type="text" placeholder="Nhập tên tác giả"></label>
+  <label>Sắp xếp<select name="sort"><option value="">Mặc định</option><option value="newest">Năm xuất bản mới nhất</option><option value="oldest">Năm xuất bản cũ nhất</option><option value="price-asc">Giá thấp đến cao</option><option value="price-desc">Giá cao đến thấp</option><option value="title-asc">Tên sách A–Z</option></select></label>
+  <label>Giá từ (₫)<input name="minPrice" type="text" inputmode="numeric" placeholder="0"></label>
+  <label>Giá đến (₫)<input name="maxPrice" type="text" inputmode="numeric" placeholder="500.000"></label>
+  <div class="book-filter-actions"><button class="btn" type="button">Lọc sách</button><button class="btn-outline" type="button">Xóa bộ lọc</button></div>
+</div>
 
 <div class="products">
   <article class="card" data-title="Nhà Giả Kim" data-author="Paulo Coelho" data-year="1988" data-cat="Tiểu thuyết" data-price="68000">

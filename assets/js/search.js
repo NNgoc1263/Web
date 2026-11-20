@@ -4,11 +4,26 @@
    - Gửi form (HTML thuần, method GET) luôn mở trang kết quả search.html; trang mới tải xong thì các ô tự trống để tìm lượt tiếp theo.
    - "Xóa nội dung tìm kiếm" là nút reset của form nên không cần mã ở đây. */
 (function () {
+  function alignNavWithSearch() {
+    var input = document.querySelector('.search-wrap .search input');
+    var nav = document.querySelector('.nav');
+    if (!input || !nav) return;
+    var left = input.getBoundingClientRect().left - nav.getBoundingClientRect().left + 21;
+    nav.style.setProperty('--nav-search-text-left', left + 'px');
+  }
+
+  alignNavWithSearch();
+  window.addEventListener('resize', alignNavWithSearch);
+
   document.querySelectorAll('form.search-wrap').forEach(function (form) {
     var panel = form.querySelector('.adv-panel');
     var quick = form.elements.q;
     if (!panel || !quick) return;
     var open = function () { panel.hidden = false; };
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      window.location.assign(form.action);
+    });
     ['focus', 'click', 'input'].forEach(function (type) { quick.addEventListener(type, open); });
     document.addEventListener('click', function (e) { if (!form.contains(e.target)) panel.hidden = true; });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.hidden = true; });

@@ -73,27 +73,21 @@
     </nav>
     </div>
     <main>
-      <div class="page-title">
-        <div class="container">
-          <div class="breadcrumb">Trang chủ / Kết quả tìm kiếm</div>
-          <h1>Kết quả tìm kiếm</h1>
-        </div>
-      </div>
       <div class="container">
-        <nav class="category-browser" aria-label="Danh mục sách">
-          <a class="category-browser-all" href="category.html#category-groups"><i class="icon icon-grid" aria-hidden="true"></i>Tất cả danh mục<i class="icon icon-chevron-down" aria-hidden="true"></i></a>
-          <a href="category.html?category=Ti%E1%BB%83u%20thuy%E1%BA%BFt">Tiểu thuyết</a>
-          <a href="category.html?category=C%E1%BB%95%20t%C3%ADch">Cổ tích</a>
-          <a href="category.html?category=Trinh%20th%C3%A1m">Trinh thám</a>
-          <a href="category.html?category=Truy%E1%BB%87n%20tranh">Truyện tranh</a>
-          <a href="category.html?category=L%E1%BB%8Bch%20s%E1%BB%AD">Lịch sử</a>
-          <a href="category.html?category=Ph%C3%A1t%20tri%E1%BB%83n%20b%E1%BA%A3n%20th%C3%A2n">Phát triển bản thân</a>
-        </nav>
                 <div class="section-head" id="all-products">
   <h2>Kết quả tìm kiếm</h2>
 </div>
 
 <p class="search-summary"><b>Tìm thấy 24 sách</b><a href="category.html">Xóa bộ lọc</a></p>
+
+<div class="book-filter" aria-label="Lọc sách">
+  <label>Thể loại<select name="category"><option value="">Tất cả thể loại</option><option>Tiểu thuyết</option><option>Cổ tích</option><option>Trinh thám</option><option>Truyện tranh</option><option>Lịch sử</option><option>Phát triển bản thân</option></select></label>
+  <label>Tác giả<input name="author" type="text" placeholder="Nhập tên tác giả"></label>
+  <label>Sắp xếp<select name="sort"><option value="">Mặc định</option><option value="newest">Năm xuất bản mới nhất</option><option value="oldest">Năm xuất bản cũ nhất</option><option value="price-asc">Giá thấp đến cao</option><option value="price-desc">Giá cao đến thấp</option><option value="title-asc">Tên sách A–Z</option></select></label>
+  <label>Giá từ (₫)<input name="minPrice" type="text" inputmode="numeric" placeholder="0"></label>
+  <label>Giá đến (₫)<input name="maxPrice" type="text" inputmode="numeric" placeholder="500.000"></label>
+  <div class="book-filter-actions"><button class="btn" type="button">Lọc sách</button><button class="btn-outline" type="button">Xóa bộ lọc</button></div>
+</div>
 
 <div class="products">
   <article class="card" data-title="Nhà Giả Kim" data-author="Paulo Coelho" data-year="1988" data-cat="Tiểu thuyết" data-price="68000">
