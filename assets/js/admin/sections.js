@@ -3,8 +3,8 @@
   var main = document.querySelector('.admin-main');
   if (!main) return;
 
-  var sectionIds = ['customers', 'products', 'orders', 'stats'];
-  var activeSection = '';
+  var sectionIds = ['overview', 'customers', 'products', 'orders', 'stats'];
+  var activeSection = 'overview';
   var sectionStorageKey = 'bookly-admin-active-section';
 
   function rememberSection(sectionId) {
@@ -14,9 +14,9 @@
   function recalledSection() {
     try {
       var saved = window.sessionStorage.getItem(sectionStorageKey) || '';
-      return sectionIds.indexOf(saved) !== -1 ? saved : '';
+      return sectionIds.indexOf(saved) !== -1 ? saved : 'overview';
     } catch (err) {
-      return '';
+      return 'overview';
     }
   }
 
@@ -26,15 +26,16 @@
       activeSection = hashId;
       rememberSection(activeSection);
     } else if (!hashId) {
-      activeSection = '';
+      activeSection = 'overview';
       rememberSection(activeSection);
-    } else if (!activeSection) {
+    } else {
       activeSection = recalledSection();
+      rememberSection(activeSection);
     }
 
     var selected = activeSection ? document.getElementById(activeSection) : null;
     main.querySelectorAll(':scope > *').forEach(function (item) {
-      var isSection = item.classList.contains('admin-box') || item.classList.contains('admin-split');
+      var isSection = item.classList.contains('admin-box') || item.classList.contains('admin-split') || item.id === 'overview';
       if (isSection) {
         item.hidden = Boolean(activeSection) && item !== selected;
       } else if (item.matches('h1, p, .stats')) {
@@ -45,8 +46,7 @@
     document.querySelectorAll('.sidebar a').forEach(function (link) {
       var url = new URL(link.href, window.location.href);
       var linkId = url.hash.slice(1);
-      var isOverview = url.pathname === window.location.pathname && !linkId && link.textContent.trim().indexOf('Tổng quan') !== -1;
-      var isActive = activeSection ? linkId === activeSection : isOverview;
+      var isActive = linkId === activeSection;
       link.classList.toggle('is-active', isActive);
       if (isActive) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
@@ -62,8 +62,7 @@
       rememberSection(activeSection);
       window.history.pushState(null, '', link.href);
       renderSection();
-      var section = document.getElementById(sectionId);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo(0, 0);
     });
   });
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap">
     <link rel="icon" href="../../assets/images/logo-bookly.png">
     <link rel="stylesheet" href="../../assets/css/base.css">
-    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css?v=2">
     <script src="../../assets/js/admin/auth.js"></script>
   </head>
   <body>
@@ -98,7 +98,7 @@
       <aside class="sidebar">
         <h2>BOOKLY</h2>
         <p class="text-center">ADMIN PANEL</p>
-        <a href="index.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg><span>Tổng quan</span></a>
+        <a href="index.html#overview"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg><span>Tổng quan</span></a>
         <a href="index.html#customers"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Quản lý khách hàng</span></a>
         <a href="index.html#products"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></svg><span>Quản lý sản phẩm</span></a>
         <a href="index.html#orders"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg><span>Quản lý đơn hàng</span></a>
@@ -107,30 +107,58 @@
         <a href="login.html" class="admin-logout"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M20 12H9"/></svg><span>Đăng xuất</span></a>
       </aside>
       <section class="admin-main">
-        <h1>Trang quản trị</h1>
-        <p>Giao diện quản trị website bán sách</p>
-        <div class="stats">
-          <div class="stat">
-            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Khách hàng</span>
-            <h2>1.248</h2>
-            +12 hôm nay
+        <section class="overview-section" id="overview">
+          <header class="overview-heading">
+            <div>
+              <p class="overview-breadcrumb">Quản trị <span>›</span> <strong>Tổng quan</strong></p>
+              <h1>Tổng quan</h1>
+              <p class="overview-subtitle">Chào mừng quay lại, Quản trị viên.</p>
+            </div>
+            <div class="overview-period-pill"><span></span>Kỳ báo cáo: 01/10/2026 – 21/10/2026 · 21 ngày</div>
+          </header>
+
+          <form class="overview-filter" action="index.html" method="get" aria-label="Khoảng thời gian báo cáo">
+            <div class="overview-period-fields">
+              <label>Từ ngày<input type="date" value="2026-10-01"></label>
+              <label>Đến ngày<input type="date" value="2026-10-21"></label>
+              <button class="overview-submit" type="submit">Xem tổng quan</button>
+            </div>
+            <p>Giao diện lọc ngày minh họa; số liệu bên dưới giữ theo thống kê tĩnh tháng 10/2026. Doanh thu chỉ tính đơn đã giao thành công.</p>
+          </form>
+
+          <div class="overview-kpis">
+            <article class="overview-kpi is-revenue"><span>Doanh thu tháng 10</span><strong>18.600.000 ₫</strong><small>Doanh thu 6 tháng gần đây đang tăng</small></article>
+            <article class="overview-kpi"><span>Đơn hàng trong kỳ</span><strong>86</strong><small>Tổng các trạng thái đơn tháng 10</small></article>
+            <article class="overview-kpi is-pending"><span>Đơn cần xử lý</span><strong>23</strong><small>9 chờ xác nhận · 14 đã xác nhận</small></article>
+            <article class="overview-kpi is-delivered"><span>Đã giao thành công</span><strong>47</strong><small>Đơn được tính vào doanh thu</small></article>
           </div>
-          <div class="stat">
-            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></svg>Sản phẩm</span>
-            <h2>10.888</h2>
-            Đang hiển thị
+
+          <div class="overview-panels">
+            <section class="overview-panel">
+              <header><h2>Đơn hàng cần xử lý</h2><a href="index.html#orders">Xem tất cả →</a></header>
+              <div class="table-scroll"><table class="overview-order-table">
+                <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Ngày</th><th>Tổng</th><th>Trạng thái</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>DH1030</strong></td><td>Võ Minh Khang</td><td>06/10/2026</td><td>161.000 ₫</td><td><span class="overview-status is-wait">Chờ xác nhận</span></td></tr>
+                  <tr><td><strong>DH1029</strong></td><td>Lê Ngọc Mai</td><td>05/10/2026</td><td>272.000 ₫</td><td><span class="overview-status is-wait">Chờ xác nhận</span></td></tr>
+                  <tr><td><strong>DH1028</strong></td><td>Phạm Gia Hân</td><td>05/10/2026</td><td>118.000 ₫</td><td><span class="overview-status is-confirmed">Đã xác nhận</span></td></tr>
+                  <tr><td><strong>DH1024</strong></td><td>Nguyễn Minh Anh</td><td>02/10/2026</td><td>163.000 ₫</td><td><span class="overview-status is-confirmed">Đã xác nhận</span></td></tr>
+                </tbody>
+              </table></div>
+              <p class="overview-note">Đang có 23 đơn cần xử lý: 9 đơn chờ xác nhận và 14 đơn đã xác nhận.</p>
+            </section>
+            <section class="overview-panel overview-order-status">
+              <header><h2>Tình trạng đơn hàng</h2><a href="index.html#orders">Quản lý →</a></header>
+              <ul>
+                <li><span class="overview-status is-wait">Chờ xác nhận</span><strong>9 đơn</strong><small>Chờ cửa hàng xác nhận</small></li>
+                <li><span class="overview-status is-confirmed">Đã xác nhận</span><strong>14 đơn</strong><small>Đang chuẩn bị hoặc giao hàng</small></li>
+                <li><span class="overview-status is-shipped">Đang giao</span><strong>11 đơn</strong><small>Đơn đang trên đường giao</small></li>
+                <li><span class="overview-status is-done">Đã giao thành công</span><strong>47 đơn</strong><small>Được tính vào doanh thu</small></li>
+                <li><span class="overview-status is-cancelled">Đã hủy</span><strong>5 đơn</strong><small>Không tính doanh thu</small></li>
+              </ul>
+            </section>
           </div>
-          <div class="stat">
-            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg>Đơn hàng</span>
-            <h2>86</h2>
-            Trong tháng
-          </div>
-          <div class="stat">
-            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5C9.5 8.5 10.6 8 12 8s2.5.6 2.5 1.6S13.4 11 12 11.3 9.5 12 9.5 13.2 10.6 15 12 15s2.5-.5 2.5-1.5"/></svg>Doanh thu</span>
-            <h2>18,6M</h2>
-            Trong tháng
-          </div>
-        </div>
+        </section>
         <div class="admin-box" id="customers">
           <h2 class="has-btn">Quản lý khách hàng <a class="btn btn-sm" href="customer-edit.html">+ Thêm khách hàng</a></h2>
           <div class="cu-stats">
@@ -679,7 +707,7 @@
         </div>
       </section>
     </div>
-  <script src="../../assets/js/admin/sections.js?v=3"></script>
+  <script src="../../assets/js/admin/sections.js?v=4"></script>
   <script src="../../assets/js/flash.js?v=10"></script>
   <script src="../../assets/js/pagination.js?v=11"></script>
   <script src="../../assets/js/admin/dashboard.js"></script>
