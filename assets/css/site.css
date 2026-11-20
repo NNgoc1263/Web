@@ -674,8 +674,8 @@
 .cart .cart-row {
   display: grid;
   /* Give quantity and action columns enough room so their content stays centered and unwrapped. */
-  grid-template-columns: 40px 85px minmax(240px, 1fr) 150px 185px 150px 80px;
-  gap: 15px;
+  grid-template-columns: 30px 70px minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr) 60px;
+  gap: 12px;
   align-items: center;
 }
 .cart-columns {
