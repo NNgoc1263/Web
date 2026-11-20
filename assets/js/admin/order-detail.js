@@ -1,6 +1,5 @@
-/* Trang chi tiết đơn hàng (pages/admin/order-detail.html?id=DH1030&from=orders|stats|customers|customer&cid=KH001).
-   Dữ liệu lấy từ data.js. Admin xử lý đơn ngay tại đây (xác nhận, giao hàng, đã giao, hủy);
-   trạng thái chỉ đổi trên trang này (minh họa), tải lại trang sẽ về như ban đầu. */
+/* Trang chi tiết đơn hàng (chỉ giao diện). Các nút xử lý đơn chỉ hiện thông báo,
+   không thay đổi trạng thái hay dữ liệu đơn hàng. */
 (function () {
   var D = BOOKLY;
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -66,10 +65,8 @@
   });
 
   function apply(a) {
-    order.status = a[1];
-    render();
-    notify(a[2].replace('#', '#' + id), a[3]);
-  }
+  notify(a[2].replace('#', '#' + id), a[3]);
+}
 
   function render() {
     var st = order.status;
