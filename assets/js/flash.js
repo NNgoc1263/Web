@@ -41,7 +41,7 @@
     e.preventDefault();
     // Đang mở hộp xác nhận (:target)? Đóng nó bằng cách bỏ "#..." khỏi URL.
     var cur = location.hash && document.getElementById(location.hash.slice(1));
-    if (cur && !isFlash(cur)) {
+    if (cur && cur.classList.contains('confirm-box')) {
       // replaceState không cập nhật :target, hộp xác nhận sẽ còn hiện; chuyển :target sang chính thông báo rồi mới xoá "#..."
       try { location.replace('#' + el.id); } catch (err) { /* file:// cũ */ }
       stripHash();

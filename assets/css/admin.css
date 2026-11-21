@@ -3706,3 +3706,16 @@ a.ce-del:hover {
 }
 
 .admin-split.pf-page { margin: 0; }
+
+.ov-summary { border-top-color: var(--terra); }
+.ov-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 6px; }
+.ov-summary-grid > div { display: grid; align-content: start; gap: 6px; padding-left: 24px; border-left: 1px solid var(--line); }
+.ov-summary-grid > div:first-child { padding-left: 0; border-left: 0; }
+.ov-summary-grid > div > span { color: var(--ink); font-size: 18px; }
+.ov-summary-grid > div > strong { color: var(--green); font-family: var(--serif); font-size: clamp(28px, 2.6vw, 38px); font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.ov-summary-grid > div:nth-child(2) > strong { color: var(--terra); }
+.ov-summary-grid > div > small { color: var(--ink); font-size: 18px; }
+@media (max-width: 760px) {
+  .ov-summary-grid { grid-template-columns: 1fr; }
+  .ov-summary-grid > div { padding-left: 0; border-left: 0; }
+}
