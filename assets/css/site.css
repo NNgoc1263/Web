@@ -18,14 +18,16 @@
 /* Thanh đầu trang: logo, tìm kiếm và tài khoản */
 .header {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) 322px;
-  gap: 28px;
+  grid-template-columns: auto minmax(0, 1fr) calc(350px + max(7vw, 50vw - 625px) - 28px);
+  column-gap: 0;     
+  row-gap: 16px;
   align-items: center;
-  padding: 12px max(7%, calc(50% - 625px));
+  padding: 12px 28px 12px max(7%, calc(50% - 625px));
   background: var(--panel);
   border-bottom: 1px solid var(--line);
 }
 .logo {
+  margin-right: 28px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -85,9 +87,8 @@
   color: var(--muted);
 }
 .head-links {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  gap: 4px 10px;
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
   white-space: nowrap;
 }
@@ -226,11 +227,10 @@
 .nav {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 42px;
   padding: 12px max(7%, calc(50% - 625px));
-  padding-left: var(--nav-search-text-left, calc(5% + 21px));
   background: var(--panel);
   border-bottom: 1px solid var(--line);
   color: #fbf7f2;
