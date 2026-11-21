@@ -551,6 +551,10 @@
   padding-right: 52px;
   /* đẩy cột "Ngày đăng ký" sang trái cho cân đối */
 }
+#customers .admin-table.customers-table th:nth-child(3),
+#customers .admin-table.customers-table td:nth-child(3) {
+  text-align: center !important;
+}
 
 #customers .admin-table.customers-table td.cu-info {
   white-space: normal;
